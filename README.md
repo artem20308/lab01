@@ -1,8 +1,14 @@
-1) Скачайте библиотеку boost с помощью утилиты wget. Адрес для скачивания https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz.
+# 1. Выполнение домашнего задания
 
+## 1) Скачайте библиотеку boost с помощью утилиты wget. Адрес для скачивания https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz.
+
+####Команда:
+```
 ubuntu@ubuntu:~$ wget https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz
+```
 
-
+####Вывод:
+```
 --2026-03-06 06:57:15--  https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz
 Resolving sourceforge.net (sourceforge.net)... 104.18.12.149, 104.18.13.149, 2606:4700::6812:c95, ...
 Connecting to sourceforge.net (sourceforge.net)|104.18.12.149|:443... connected.
@@ -29,48 +35,93 @@ Length: 111710205 (107M) [application/x-gzip]
 Saving to: ‘boost_1_69_0.tar.gz’
 
 boost_1_69_0.tar.gz           100%[==============================================>] 106.53M  11.9MB/s    in 8.7s    
+```
 
 2026-03-06 06:57:26 (12.3 MB/s) - ‘boost_1_69_0.tar.gz’ saved [111710205/111710205]
 
-2) Разархивируйте скаченный файл в директорию ~/boost_1_69_0
+##2) Разархивируйте скаченный файл в директорию ~/boost_1_69_0
 
+####Команда:
+```
 ubuntu@ubuntu:~$ tar -xf boost_1_69_0.tar.gz 
 ubuntu@ubuntu:~$ ls
+```
+
+####Вывод:
+```
 Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos  boost_1_69_0  boost_1_69_0.tar.gz  snap
+```
 
 
-3) Подсчитайте количество файлов в директории ~/boost_1_69_0 не включая вложенные директории.
+##3) Подсчитайте количество файлов в директории ~/boost_1_69_0 не включая вложенные директории.
 
+
+####Команда:
+```
 ubuntu@ubuntu:~/boost_1_69_0$ find -maxdepth 1 -type f | wc -l
+```
+####Вывод:
+```
 12
-
+```
 
 4) Подсчитайте количество файлов в директории ~/boost_1_69_0 включая вложенные директории.
 
+
+####Команда:
+```
 ubuntu@ubuntu:~/boost_1_69_0$ find -type f | wc -l
+```
+####Вывод:
+```
 61191
+```
 
+##5) Подсчитайте количество заголовочных файлов, файлов с расширением .cpp, сколько остальных файлов (не заголовочных и не .cpp).
 
-5) Подсчитайте количество заголовочных файлов, файлов с расширением .cpp, сколько остальных файлов (не заголовочных и не .cpp).
-
+####Заголовочные файлы:
+```
 ubuntu@ubuntu:~/boost_1_69_0$ find -type f \( -name "*.h" -o -name "*.hpp" \) | wc -l
+```
+####Вывод:
+```
 15208
-
+```
+####Файлы .cpp:
+```
 ubuntu@ubuntu:~/boost_1_69_0$ find -type f -name "*.cpp" | wc -l
+```
+####Вывод:
+```
 13774
-
+```
+####Остальные файлы:
+```
 ubuntu@ubuntu:~/boost_1_69_0$ find -type f \( ! -name "*.h" -o ! -name "*.hpp" -o ! -name "*.cpp" \) | wc -l
+```
+####Вывод:
+```
 61191
-
-6) Найдите полный путь до файла any.hpp внутри библиотеки boost.
-
+```
+##6) Найдите полный путь до файла any.hpp внутри библиотеки boost.
+ 
+####Команда:
+```
 ubuntu@ubuntu:/$ find ~/boost_1_69_0/ -path "*/boost/any.hpp"
+```
+####Вывод:
+```
 /home/ubuntu/boost_1_69_0/boost/any.hpp
+```
 
+##7) Выведите в консоль все файлы, где упоминается последовательность boost::asio.
 
-7) Выведите в консоль все файлы, где упоминается последовательность boost::asio.
-
+####Команда:
+```
 ubuntu@ubuntu:/$ grep -rl "boost::asio" ~/boost_1_69_0/
+```
+####Вывод:
+```
 /home/ubuntu/boost_1_69_0/boost/beast/http/read.hpp
 /home/ubuntu/boost_1_69_0/boost/beast/http/string_body.hpp
 /home/ubuntu/boost_1_69_0/boost/beast/http/impl/read.ipp
@@ -1834,11 +1885,17 @@ ubuntu@ubuntu:/$ grep -rl "boost::asio" ~/boost_1_69_0/
 /home/ubuntu/boost_1_69_0/doc/html/boost/process/on_exit.html
 /home/ubuntu/boost_1_69_0/doc/html/boost/process/spawn.html
 /home/ubuntu/boost_1_69_0/doc/html/boost/process/std_in.html
+```
 
+##8) Скомпилирутйе boost. Можно воспользоваться инструкцией или ссылкой.
 
-8) Скомпилирутйе boost. Можно воспользоваться инструкцией или ссылкой.
-
+####Команда:
+```
 ubuntu@ubuntu:~/boost_1_69_0$ ./bootstrap.sh
+```
+
+####Вывод:
+```
 Building Boost.Build engine with toolset gcc... tools/build/src/engine/bin.linuxarm/b2
 Unicode/ICU support for Boost.Regex?... not found.
 Generating Boost.Build configuration in project-config.jam...
@@ -19953,11 +20010,18 @@ gcc.compile.c++ bin.v2/libs/wave/build/gcc-11.4.0/release/threading-multi/visibi
 ...failed updating 12 targets...
 ...skipped 33 targets...
 ...updated 1180 targets...
+```
 
-9) Перенесите все скомпилированные на предыдущем шаге статические библиотеки в директорию ~/boost-libs.
+##9) Перенесите все скомпилированные на предыдущем шаге статические библиотеки в директорию ~/boost-libs.
 
+####Команда:
+```
 ubuntu@ubuntu:~$ mv ~/boost_1_69_0/stage/lib/*.a ~/boost-libs
 ubuntu@ubuntu:~$ ls boost-libs/
+```
+
+####Вывод:
+```
 libboost_atomic.a      libboost_graph.a      libboost_prg_exec_monitor.a      libboost_system.a
 libboost_chrono.a      libboost_iostreams.a  libboost_program_options.a       libboost_test_exec_monitor.a
 libboost_container.a   libboost_locale.a     libboost_random.a                libboost_timer.a
@@ -19967,11 +20031,17 @@ libboost_date_time.a   libboost_math_c99l.a  libboost_stacktrace_addr2line.a  li
 libboost_exception.a   libboost_math_tr1.a   libboost_stacktrace_backtrace.a
 libboost_fiber.a       libboost_math_tr1f.a  libboost_stacktrace_basic.a
 libboost_filesystem.a  libboost_math_tr1l.a  libboost_stacktrace_noop.a
+```
 
+##10) Подсчитайте сколько занимает дискового пространства каждый файл в этой директории.
 
-10) Подсчитайте сколько занимает дискового пространства каждый файл в этой директории.
-
+####Команда:
+```
 ubuntu@ubuntu:~$ ls -lhS boost-libs/
+```
+
+####Вывод:
+```
 total 35M
 -rw-rw-r-- 1 ubuntu ubuntu 4.8M Mar  6 09:12 libboost_wave.a
 -rw-rw-r-- 1 ubuntu ubuntu 3.9M Mar  6 09:10 libboost_math_tr1.a
@@ -20006,12 +20076,17 @@ total 35M
 -rw-rw-r-- 1 ubuntu ubuntu 2.8K Mar  6 09:08 libboost_atomic.a
 -rw-rw-r-- 1 ubuntu ubuntu 1.7K Mar  6 09:13 libboost_exception.a
 -rw-rw-r-- 1 ubuntu ubuntu 1.5K Mar  6 09:16 libboost_system.a
+```
 
 
+##11) Найдите топ10 самых "тяжёлых".
 
-11) Найдите топ10 самых "тяжёлых".
-
+####Команда:
+```
 ubuntu@ubuntu:~$ ls -lhS boost-libs/ | head -10
+```
+####Вывод:
+```
 total 35M
 -rw-rw-r-- 1 ubuntu ubuntu 4.8M Mar  6 09:12 libboost_wave.a
 -rw-rw-r-- 1 ubuntu ubuntu 3.9M Mar  6 09:10 libboost_math_tr1.a
@@ -20022,5 +20097,5 @@ total 35M
 -rw-rw-r-- 1 ubuntu ubuntu 2.4M Mar  6 09:12 libboost_unit_test_framework.a
 -rw-rw-r-- 1 ubuntu ubuntu 2.2M Mar  6 09:09 libboost_locale.a
 -rw-rw-r-- 1 ubuntu ubuntu 1.8M Mar  6 09:11 libboost_program_options.a
-
+```
 
