@@ -121,7 +121,7 @@ ubuntu@ubuntu:/$ find ~/boost_1_69_0/ -path "*/boost/any.hpp"
 ubuntu@ubuntu:/$ grep -rl "boost::asio" ~/boost_1_69_0/
 ```
 #### Вывод:
-[Tap to check output](README3.md)
+[Tap to check output](README4.md)
 
 ## 8) Скомпилирутйе boost. Можно воспользоваться инструкцией или ссылкой.
 
