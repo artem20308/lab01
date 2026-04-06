@@ -180,7 +180,7 @@ Further information:
 
 #### Команда:
 ```
-
+ubuntu@ubuntu:~/boost_1_90_0$ ./b2
 ```
 
 #### Вывод:
