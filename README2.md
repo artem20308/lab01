@@ -1,3 +1,4 @@
+````
 Performing configuration checks
 
     - default address-model    : 64-bit [1]
@@ -1983,4 +1984,4 @@ The following directory should be added to compiler include paths:
 The following directory should be added to linker library paths:
 
     /home/ubuntu/boost_1_90_0/stage/lib
-
+````
